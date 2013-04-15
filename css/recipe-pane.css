@@ -71,25 +71,51 @@
             border-radius: 5px;
         }
 
-        #recipe-ingred-section .has-details {
-            background-color: #aaf;
-        }
-
-        #recipe-ingred-section .has-details:hover {
-            background-color: #88f;
-        }
-
         .ingred-orig, .ingred-sub {
             display: inline-block;
-            float: left;
         }
 
-        #recipe-pane.substituted .ingred-orig, #recipe-pane.original .ingred-sub  {
-            float: right;
+        .ingred-orig {
+            margin-right: 10px;
+        }
+
+        .ingred-sub {
+            transition: opacity 0.2s;
+        }
+
+        #recipe-pane.substituted .ingred-orig  {
             text-decoration: line-through;
-            margin-left: 10px;
         }
 
+        #recipe-pane.original .ingred-sub {
+            opacity: 0;
+        }
+
+        #recipe-ingred-section button {
+            margin-left: 5px;
+            padding: 2px 5px;
+            transition: opacity 0.2s;
+        }
+
+        #recipe-pane.original #recipe-ingred-section button {
+            margin-left: 5px;
+            padding: 2px 5px;
+            opacity: 0;
+        }
+
+    /* popover */
+        .popover {
+            cursor: default;
+        }
+
+    /* Directions */
+        #recipe-pane.substituted #recipe-directions-orig {
+            display: none;
+        }
+
+        #recipe-pane.original #recipe-directions-sub {
+            display: none;
+        }
 
 
 /* General-purpose utilities */
