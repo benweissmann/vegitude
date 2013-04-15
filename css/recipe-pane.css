@@ -1,0 +1,98 @@
+@import url(http://fonts.googleapis.com/css?family=Lemon);
+
+/* Make page full-height */
+    body, html, .container {
+        height: 100%;
+    }
+
+/* Header */
+    #header {
+        border-bottom: 1px solid #ccc;
+
+    }
+
+    #header h1 {
+        font-size: 80px;
+        font-variant: small-caps;
+        font-family: 'Lemon', cursive;
+        height: 100px;
+        line-height: 100px;
+    }
+
+/* Results pane */
+    #recipe-results {
+        width: 28%;
+        float: left;
+        height: calc(100% - 125px);
+        overflow-y: auto;
+    }
+
+/* Recipe pane */
+    #recipe-pane {
+        width: 68%;
+        float: right;
+        height: calc(100% - 125px);
+        overflow-y: auto;
+        padding-right: 10px;
+    }
+
+    /* Details */
+        #recipe-source::before {
+            content: "Source: ";
+            color: black;
+            display: inline-block;
+        }
+
+        a#recipe-source:hover::before {
+            text-decoration: none;
+        }
+
+        #recipe-time::before {
+            content: "Time: ";
+        }
+
+        #recipe-difficulty::before {
+            content: "Difficulty: ";
+        }
+
+    /* Ingredient toggle button */
+        #recipe-ingred-toggle {
+            padding-left: 50%;
+            margin: 25px 0 25px -75px;
+        }
+
+    /* Ingredient section */
+        #recipe-ingred-section li {
+            width: auto;
+            display: block;
+            float: left;
+            clear: both;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #recipe-ingred-section .has-details {
+            background-color: #aaf;
+        }
+
+        #recipe-ingred-section .has-details:hover {
+            background-color: #88f;
+        }
+
+        .ingred-orig, .ingred-sub {
+            display: inline-block;
+            float: left;
+        }
+
+        #recipe-pane.substituted .ingred-orig, #recipe-pane.original .ingred-sub  {
+            float: right;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+
+
+/* General-purpose utilities */
+    .clear {
+        clear: both;
+    }

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Recipe Pane</title>
+    <meta name="description" content="Vegitude: A recipe site for vegans, vegetarians, and others with dietary restrictions">
+    <meta name="author" content="Ben Weissmann, Miren Bamforth, Trevor Mulchay">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/recipe-pane.css">
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+             <h1>Vegitude</h1>
+        </div>
+        <div id="recipe-results">
+        </div>
+        <div id="recipe-pane" class="substituted">
+            <h2 id="recipe-name"></h2>
+            <a id="recipe-source" target="_blank"></a>
+            <div id="recipe-time"></div>
+            <div id="recipe-difficulty"></div>
+
+            <div id="recipe-ingred-toggle" class="btn-group" data-toggle="buttons-radio">
+                <button class="btn active">Original</button>
+                <button class="btn">With Substitutions</button>
+            </div>
+            <div id="recipe-ingred-section">
+                <div class="clear"></div>
+                <ul id="recipe-ingreds"></ul>
+                <div class="clear"></div>
+            </div>
+
+            <h3>Directions</h3>
+            <div id="recipe-directions"></div>
+        </div>
+    </div>
+
+
+    <script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="lib/underscore-min.js" type="text/javascript"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="data/recipe-pane.js" type="text/javascript"></script>
+    <script src="js/recipe-pane.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        RecipePane.display("Tofu Pad Thai");
+    </script>
+</body>
+</html>
