@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Merienda:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <h1 style="font-family:merienda;font-size:50px"><img src="http://placekitten.com/50/50"></img>VEGITUDE!</h1>
+    <h2 style="font-family:merienda;font-size:30px;text-align:center">What Can't You Eat?</h2>
+    <button id="Vegan" style="height:300px;width:200px;text-align:center;margin:30px;"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Vegan</p></button>
+    <button id="Vegetarian" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Vegatarian</p></button>
+    <button id="Gluten-Free" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Gluten-Free</p></button>
+    <button id="Lactose-Free" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Lactose-Free</p></button>
+    <button id="Custom" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Custom</p></button>
+    <h2 style="font-family:merienda;font-size:30px;text-align:center">What Do You Want To Eat?</h2>
+    <input id="meal" style="width:400px;margin-left:400px">
+    <button id="search">Give It To Me!</button>
+
+
+  </body>
+  <script type="text/javascript">
+    var activeButtons = [false, false, false, false, false];
+    var veganButton = document.getElementById("Vegan");
+    var veggieButton = document.getElementById("Vegetarian");
+    var glutenButton = document.getElementById("Gluten-Free");
+    var lactoseButton = document.getElementById("Lactose-Free");
+    var customButton = document.getElementById("Custom");
+
+    veganButton.onclick = function(){
+        if(activeButtons[0]){
+            veganButton.style.backgroundColor = "white";
+            activeButtons[0] = false;
+        }
+        else{
+            veganButton.style.backgroundColor = "#80d966";
+            activeButtons[0] = true;
+        }
+    };
+
+    veggieButton.onclick = function(){
+        console.log("yoyo");
+        if(activeButtons[1]){
+            veggieButton.style.backgroundColor = "white";
+            activeButtons[1] = false;
+        }
+        else{
+            veggieButton.style.backgroundColor = "#80d966";
+            activeButtons[1] = true;
+        }
+    };
+
+    glutenButton.onclick = function(){
+        if(activeButtons[2]){
+            glutenButton.style.backgroundColor = "white";
+            activeButtons[2] = false;
+        }
+        else{
+            glutenButton.style.backgroundColor = "#80d966";
+            activeButtons[2] = true;
+        }
+    };
+
+    lactoseButton.onclick = function(){
+        if(activeButtons[3]){
+            lactoseButton.style.backgroundColor = "white";
+            activeButtons[3] = false;
+        }
+        else{
+            lactoseButton.style.backgroundColor = "#80d966";
+            activeButtons[3] = true;
+        }
+    };
+
+    customButton.onclick = function(){
+        if(activeButtons[4]){
+            customButton.style.backgroundColor = "white";
+            activeButtons[4] = false;
+        }
+        else{
+            customButton.style.backgroundColor = "#80d966";
+            activeButtons[4] = true;
+        }
+    };
+
+  </script>
+</html>
