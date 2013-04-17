@@ -1,0 +1,20 @@
+/* not done with this, just wanted to commit it now */
+
+/* Header */
+    #header h4 {
+        border-bottom: 1px solid #ccc;
+
+    }
+
+/* Results */
+    .result {
+        background-color: #C9C9C9;
+        border: 1px;
+        border-style: groove;
+        border-bottom-left-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+        margin: 10px;
+        padding-left: 25px;
+    }
