@@ -2,84 +2,89 @@
 <html>
   <head>
     <link href='http://fonts.googleapis.com/css?family=Merienda:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/search-page.css">
   </head>
   <body>
-    <h1 style="font-family:merienda;font-size:50px"><img src="http://placekitten.com/50/50"></img>VEGITUDE!</h1>
-    <h2 style="font-family:merienda;font-size:30px;text-align:center">What Can't You Eat?</h2>
-    <button id="Vegan" style="height:300px;width:200px;text-align:center;margin:30px;"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Vegan</p></button>
-    <button id="Vegetarian" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Vegatarian</p></button>
-    <button id="Gluten-Free" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Gluten-Free</p></button>
-    <button id="Lactose-Free" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Lactose-Free</p></button>
-    <button id="Custom" style="height:300px;width:200px;text-align:center;margin:30px"><img src="http://placekitten.com/133/200"></img><br><p style="font-family:merienda;font-size:20px">Custom</p></button>
-    <h2 style="font-family:merienda;font-size:30px;text-align:center">What Do You Want To Eat?</h2>
-    <input id="meal" style="width:400px;margin-left:400px">
-    <button id="search">Give It To Me!</button>
+    <div class="container">
+        <div id="header">
+             <h1>Vegitude</h1>
+        </div>
+
+        <h2>What Are You?</h2>
+
+        <div id="choices" class="row">
+            <div class="span1"></div>
+            <div id="drBtn"class="span2">
+                <button id="Vegan" class="btn">
+                    <span>V</span>
+                    <br>
+                    <p>
+                        Vegan
+                    </p>
+                </button>
+            </div>
+
+            <div id="drBtn" class="span2">
+                <button id="Vegetarian" class="btn">
+                    <span>Vt</span>
+                    <br>
+                    <p>
+                        Vegetarian
+                    </p>
+                </button>
+            </div>
+
+            <div id="drBtn" class="span2">
+                <button id="Gluten-Free" class="btn">
+                    <span>G</span>
+                    <br>
+                    <p>
+                        Gluten-Free
+                    </p>
+                </button>
+            </div>
+
+            <div id="drBtn" class="span2">
+                <button id="Lactose-Free" class="btn">
+                    <span>L</span>
+                    <br>
+                    <p>
+                        Lactose-Free
+                    </p>
+                </button>
+            </div>
+
+            <div id="drBtn" class="span2">
+                <button id="Custom" class="btn">
+                    <span>?</span>
+                    <br>
+                    <p>
+                        Custom
+                    </p>
+                </button>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="customContainer" class='span1 offset9'>
+                <h3>What can't you eat?</h3>
+                <input id="allergies">
+                <button id="add" class="btn btn-success"><i class="icon-plus icon-white"></i></button>
+                <br>
+            </div>
+        </div>
+        
+        <h2>What Do You Want To Eat?</h2>
+
+        <div class="row">
+            <input id="meal" class="offset3"style="width:400px;">
+            <button id="search" type="submit" class="btn">Give It To Me!</button>
+        </div>
+    </div>
 
 
-  </body>
-  <script type="text/javascript">
-    var activeButtons = [false, false, false, false, false];
-    var veganButton = document.getElementById("Vegan");
-    var veggieButton = document.getElementById("Vegetarian");
-    var glutenButton = document.getElementById("Gluten-Free");
-    var lactoseButton = document.getElementById("Lactose-Free");
-    var customButton = document.getElementById("Custom");
-
-    veganButton.onclick = function(){
-        if(activeButtons[0]){
-            veganButton.style.backgroundColor = "white";
-            activeButtons[0] = false;
-        }
-        else{
-            veganButton.style.backgroundColor = "#80d966";
-            activeButtons[0] = true;
-        }
-    };
-
-    veggieButton.onclick = function(){
-        console.log("yoyo");
-        if(activeButtons[1]){
-            veggieButton.style.backgroundColor = "white";
-            activeButtons[1] = false;
-        }
-        else{
-            veggieButton.style.backgroundColor = "#80d966";
-            activeButtons[1] = true;
-        }
-    };
-
-    glutenButton.onclick = function(){
-        if(activeButtons[2]){
-            glutenButton.style.backgroundColor = "white";
-            activeButtons[2] = false;
-        }
-        else{
-            glutenButton.style.backgroundColor = "#80d966";
-            activeButtons[2] = true;
-        }
-    };
-
-    lactoseButton.onclick = function(){
-        if(activeButtons[3]){
-            lactoseButton.style.backgroundColor = "white";
-            activeButtons[3] = false;
-        }
-        else{
-            lactoseButton.style.backgroundColor = "#80d966";
-            activeButtons[3] = true;
-        }
-    };
-
-    customButton.onclick = function(){
-        if(activeButtons[4]){
-            customButton.style.backgroundColor = "white";
-            activeButtons[4] = false;
-        }
-        else{
-            customButton.style.backgroundColor = "#80d966";
-            activeButtons[4] = true;
-        }
-    };
-
-  </script>
+    </body>
+    <script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/search-page.js" type="text/javascript"></script>
 </html>

@@ -1,0 +1,96 @@
+@import url(http://fonts.googleapis.com/css?family=Lemon);
+@import url(http://fonts.googleapis.com/css?family=Amaranth);
+@import url(http://fonts.googleapis.com/css?family=Days+One);
+
+
+/* Make page full-height */
+    body, html, .container {
+        height: 100%;
+    }
+
+/* Header */
+    #header {
+        border-bottom: 1px solid #ccc;
+
+    }
+
+    #header h1 {
+        font-size: 80px;
+        font-variant: small-caps;
+        font-family: 'lemon', cursive;
+        height: 100px;
+        line-height: 100px;
+    }
+
+    h2 {
+    	font-family: 'amaranth',cursive;
+    	font-size:30px;
+    	text-align:center;
+    	padding-top: 50px;
+    	padding-bottom: 20px;
+    }
+
+    #choices button {
+    	height:200px;
+    	width:133px;
+    	text-align:center;
+    	/*margin:10px;*/
+    	border-radius: 5px;
+    	border-color: #ccc;
+
+    }
+
+    #choices p {
+    	font-size: 15px;
+    }
+
+    #choices span{
+    	text-align: center;
+    	font-family: 'Days one';
+    	font-size:60px;
+    }
+
+    #customContainer {
+    	border-style: solid;
+    	border-color: #ccc;
+    	border-width: thin;
+    	border-radius: 5px;
+    	height:250px;
+    	width:220px;
+    	display:none;
+    	overflow:auto;
+    }
+
+    #customContainer input{
+    	margin-left: 25px;
+    	margin-bottom: 25px;
+    	width: 100px;
+    	height:25px;
+
+    }
+
+    #customContainer button{
+    	width:50px;
+    	height:30px;
+    	margin-bottom: 25px;
+
+    }
+
+    #customContainer h3{
+    	font-size: 15px;
+    	font-family: 'amaranth',cursive;
+    	text-align: center;
+    }
+
+    #customContainer i{
+    	text-align: center;
+    }
+
+    #customContainer span{
+    	margin-left:25px;
+    	width:110px;
+    	float:left;
+    	display:block;
+    }
+
+
