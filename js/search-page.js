@@ -12,15 +12,16 @@ $(function(){
     });
 
     function addCustomItem() {
-        var input = $('input[id=allergies]').val();
+        var input = $('#allergies').val();
 
-        $("<div><span>" + input + "</span><button class='btn btn-danger'><i class='icon-minus icon-white'></i></button></div>")
+        $("<div><span>" + input + "</span><button class='btn btn-danger btn-mini'><i class='icon-minus icon-white'></i></button></div>")
             .insertAfter("#add")
             .find("button").click(function(){
                 $(this).parent().remove();
             });
 
-        $('input[id=allergies]').val("");
+        $('#allergies').val("");
+        $("#allergies").focus();
     }
 
     $("#add").click(addCustomItem);
@@ -31,6 +32,15 @@ $(function(){
     });
 
     $("#custom").click(function() {
-        $("#customContainer").slideToggle("slow");
+        if($("#customContainer").hasClass("shown")) {
+            $("#customContainer").animate({'left': '630px'})
+                                 .removeClass("shown");
+        }
+        else {
+            $("#customContainer").animate({'left': '855px'})
+                                 .addClass("shown");
+
+            $("#allergies").focus();
+        }
     });
 });

@@ -6,6 +6,7 @@
 /* Make page full-height */
     body, html, .container {
         height: 100%;
+        z-index: -5;
     }
 
 /* Header */
@@ -30,7 +31,11 @@
     	padding-bottom: 20px;
     }
 
-    #choices button {
+    #choices {
+        position: relative;
+    }
+
+    #drBtns button {
     	height:200px;
     	width:133px;
     	text-align:center;
@@ -44,10 +49,21 @@
     	font-size: 15px;
     }
 
-    #choices span{
+    #choices button span{
     	text-align: center;
     	font-family: 'Days one';
     	font-size:60px;
+    }
+
+    .drBtn:last-child {
+        width: 130px;
+    }
+
+    #drBtns {
+        width: 870px;
+        background-color: white;
+        position: relative;
+        z-index: 100;
     }
 
     #customContainer {
@@ -55,25 +71,32 @@
     	border-color: #ccc;
     	border-width: thin;
     	border-radius: 5px;
-    	height:250px;
-    	width:220px;
-    	display:none;
+    	height: 198px;
+    	width: 220px;
+    	/*display:none;*/
     	overflow:auto;
+        position: absolute;
+        top: 0;
+        left: 630px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
     }
 
     #customContainer input{
     	margin-left: 25px;
     	margin-bottom: 25px;
-    	width: 100px;
+    	width: 130px;
     	height:25px;
 
     }
 
     #customContainer button{
-    	width:50px;
-    	height:30px;
-    	margin-bottom: 25px;
+        margin-bottom: 5px;
+    }
 
+    #customContainer .btn-success{
+        margin-top: -20px;
     }
 
     #customContainer h3{
@@ -88,7 +111,7 @@
 
     #customContainer span{
     	margin-left:25px;
-    	width:120px;
+    	width:148px;
     	float:left;
     	display:block;
     }
