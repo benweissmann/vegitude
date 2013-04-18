@@ -1,5 +1,3 @@
-/* not done with this, just wanted to commit it now */
-
 /* Header */
     #header h4 {
         border-bottom: 1px solid #ccc;
@@ -17,8 +15,46 @@
         border-top-right-radius: 1em;
         margin: 10px;
         padding-left: 18px;
+        transition: background-color 0.25s;
+        cursor: pointer;
     }
 
-    .active {
+    .result:hover {
         background-color: #8C8C8C;
     }
+
+    .result.active {
+        background-color: #00aaee;
+        position: relative;
+        cursor: default;
+    }
+
+    .result.active:after, .result.active:before {
+        left: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .result.active:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-left-color: #00aaee;
+        border-width: 10px;
+        top: 50%;
+        margin-top: -10px;
+    }
+    .result.active:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-width: 16px;
+        top: 50%;
+        margin-top: -16px;
+    }
+
+    #recipe-results {
+        border-right: 1px solid #ccc;
+    }
+
+

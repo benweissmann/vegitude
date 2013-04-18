@@ -16,7 +16,7 @@
 
         <div id="choices" class="row">
             <div class="span1"></div>
-            <div id="drBtn"class="span2">
+            <div class="drBtn span2">
                 <button id="Vegan" class="btn">
                     <span>V</span>
                     <br>
@@ -26,7 +26,7 @@
                 </button>
             </div>
 
-            <div id="drBtn" class="span2">
+            <div class="drBtn span2">
                 <button id="Vegetarian" class="btn">
                     <span>Vt</span>
                     <br>
@@ -36,7 +36,7 @@
                 </button>
             </div>
 
-            <div id="drBtn" class="span2">
+            <div class="drBtn span2">
                 <button id="Gluten-Free" class="btn">
                     <span>G</span>
                     <br>
@@ -46,7 +46,7 @@
                 </button>
             </div>
 
-            <div id="drBtn" class="span2">
+            <div class="drBtn span2">
                 <button id="Lactose-Free" class="btn">
                     <span>L</span>
                     <br>
@@ -56,8 +56,8 @@
                 </button>
             </div>
 
-            <div id="drBtn" class="span2">
-                <button id="Custom" class="btn">
+            <div class="drBtn span2">
+                <button id="custom" class="btn">
                     <span>?</span>
                     <br>
                     <p>
@@ -69,7 +69,7 @@
         <div class="row-fluid">
             <div id="customContainer" class='span1 offset9'>
                 <h3>What can't you eat?</h3>
-                <input id="allergies">
+                <input type="text" id="allergies">
                 <button id="add" class="btn btn-success"><i class="icon-plus icon-white"></i></button>
                 <br>
             </div>
@@ -78,8 +78,10 @@
         <h2>What Do You Want To Eat?</h2>
 
         <div class="row">
-            <input id="meal" class="offset3"style="width:400px;">
-            <button id="search" type="submit" class="btn">Give It To Me!</button>
+            <form action="results.html">
+                <input name="query" id="meal" type="text" class="offset3">
+                <input id="search" type="submit" class="btn" value="Give It To Me!" />
+            </form>
         </div>
     </div>
 

@@ -73,7 +73,7 @@ RECIPE_PANE_DATA = {
                 "substitute": ["1 cup", "mashed bananas"],
                 "where_to_buy": ["Shaw's", "http://www.shaws.com/stores/search-stores.html"],
                 "other_substitutions": [
-                    ["none"]
+                    ["", "none"]
                 ]
             },
             {
@@ -167,7 +167,7 @@ RECIPE_PANE_DATA = {
                 "substitute": ["1/3 cup", "water chestnuts, sliced"],
                 "where_to_buy": ["Shaw's", "http://www.shaws.com/stores/search-stores.html"],
                 "other_substitutions": [
-                    ["none"]
+                    ["", "none"]
                 ]
             },
             {

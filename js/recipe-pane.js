@@ -22,53 +22,72 @@
         return directions
     }
 
+    var current = undefined;
+
     var RecipePane = {
         // displays the recipe with the given name
-        display: function(name) {
-            var recipe = RECIPE_PANE_DATA[name];
+        // if noFade is true, skips fading
+        display: function(name, noFade) {
+            if(noFade) {
+                var recipe = RECIPE_PANE_DATA[name];
 
-            $("#recipe-name").text(name);
-            $("#recipe-source").text(recipe.source[0])
-                               .attr("href", recipe.source[1]);
-            $("#recipe-time").text(recipe.time);
-            $("#recipe-difficulty").text(recipe.difficulty);
+                $("#recipe-name").text(name);
+                $("#recipe-source").text(recipe.source[0])
+                                   .attr("href", recipe.source[1]);
+                $("#recipe-time").text(recipe.time);
+                $("#recipe-difficulty").text(recipe.difficulty);
 
-            $("#recipe-ingreds").empty();            
-            recipe.ingredients.forEach(function(ingredient) {
-                var listItem;
+                $("#recipe-ingreds").empty();            
+                recipe.ingredients.forEach(function(ingredient) {
+                    var listItem;
 
-                if(ingredient.substitute) {
-                    var listItem = $("<li />");
-                    listItem.append('<span class="ingred-orig">' + formatIngred(ingredient.original));
-                    listItem.append('<span class="ingred-sub">' + formatIngred(ingredient.substitute));
+                    if(ingredient.substitute) {
+                        var listItem = $("<li />");
+                        listItem.append('<span class="ingred-orig">' + formatIngred(ingredient.original));
+                        listItem.append('<span class="ingred-sub">' + formatIngred(ingredient.substitute));
 
-                    var btn = $("<button class=\"btn btn-small\"><i class=\"icon-question-sign\"></i></button>")
+                        var btn = $("<button class=\"btn btn-small\"><i class=\"icon-question-sign\"></i></button>")
 
-                    btn.popover({
-                        html: "true",
-                        placement: "right",
-                        trigger: "hover ",
-                        title: ingredient.original[1],
-                        delay: { hide: 250 },
-                        container: btn[0],
-                        content: ("<b>substitution: </b>" + formatIngred(ingredient.substitute) + "<br />" +
-                                 "<b>where to buy: </b>" + makeLink(ingredient.where_to_buy) + "<br />" +
-                                 "<b>alternatives: </b>" + _.map(ingredient.other_substitutions, function(sub) {
-                                     return formatIngred(sub);
-                                 }).join(", "))
-                    });
+                        btn.popover({
+                            html: "true",
+                            placement: "right",
+                            trigger: "hover ",
+                            title: ingredient.original[1],
+                            delay: { hide: 100 },
+                            container: btn[0],
+                            content: ("<b>substitution: </b>" + formatIngred(ingredient.substitute) + "<br />" +
+                                     "<b>where to buy: </b>" + makeLink(ingredient.where_to_buy) + "<br />" +
+                                     "<b>alternatives: </b>" + _.map(ingredient.other_substitutions, function(sub) {
+                                         return formatIngred(sub);
+                                     }).join(", "))
+                        });
 
-                    listItem.append(btn);
+                        listItem.append(btn);
+                    }
+                    else {
+                        listItem = $("<li>" + formatIngred(ingredient.original) + "</li>");
+                    }
+
+                    $("#recipe-ingreds").append(listItem);
+                });
+                
+                $("#recipe-directions-orig").text(recipe.directions);
+                $("#recipe-directions-sub").text(subDirections(recipe.directions, recipe.ingredients));   
+            }
+            else {
+                if(current == name) {
+                    return;
                 }
                 else {
-                    listItem = $("<li>" + formatIngred(ingredient.original) + "</li>");
+                    current = name;
                 }
-
-                $("#recipe-ingreds").append(listItem);
-            });
+                
+                $("#recipe-pane").fadeOut(250, function() {
+                    RecipePane.display(name, true);
+                    $("#recipe-pane").fadeIn(250);
+                });
+            }
             
-            $("#recipe-directions-orig").text(recipe.directions);
-            $("#recipe-directions-sub").text(subDirections(recipe.directions, recipe.ingredients));   
         }
     }
 

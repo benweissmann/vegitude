@@ -88,9 +88,14 @@
 
     #customContainer span{
     	margin-left:25px;
-    	width:110px;
+    	width:120px;
     	float:left;
     	display:block;
+    }
+
+    #meal {
+        margin-top: 10px;
+        width: 400px;
     }
 
 

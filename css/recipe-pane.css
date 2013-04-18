@@ -25,6 +25,7 @@
         float: left;
         height: calc(100% - 125px);
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
 /* Recipe pane */
@@ -41,6 +42,7 @@
             content: "Source: ";
             color: black;
             display: inline-block;
+            margin-right: 0.4em;
         }
 
         a#recipe-source:hover::before {
