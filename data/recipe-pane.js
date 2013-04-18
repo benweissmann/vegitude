@@ -80,7 +80,7 @@ RECIPE_PANE_DATA = {
                 "original": ["3 tbsp", "corn oil"]
             }
         ],
-        "directions": "Pour the flour, salt, granulated sugar, cinnamon, and baking powder in a large bowl and combine. Mash the bananas. Mix in the bananas and soy milk. Stir until combined. Let the pancake batter sit for 5 minutes before using. Pre-heat oven to 200 degrees. Heat a large skillet with 1-2 Tbsp of the oil over medium heat. Cook until bubbles begin to form around the edge of the pancakes. Flip and cook for another 2-3 minutes. Add remaning oil as needed and continue to cook pancakes until all the batter is gone."
+        "directions": "Pour the flour, salt, granulated sugar, cinnamon, and baking powder in a large bowl and combine. Mix in the mashed bananas and milk. Stir until combined. Let the pancake batter sit for 5 minutes before using. Pre-heat oven to 200 degrees. Heat a large skillet with 1-2 Tbsp of the oil over medium heat. Cook until bubbles begin to form around the edge of the pancakes. Flip and cook for another 2-3 minutes. Add remaning oil as needed and continue to cook pancakes until all the batter is gone."
     },
 
     "Fried Rice": {
@@ -106,7 +106,7 @@ RECIPE_PANE_DATA = {
                 "original": ["1", "onion, chopped"]
             },
             {
-                "original": ["1 cup", "cooked chicken meat"],
+                "original": ["1 cup", "cooked chicken"],
                 "substitute": ["1 cup", "tofu"],
                 "where_to_buy": ["Shaw's", "http://www.shaws.com/stores/search-stores.html"],
                 "other_substitutions": [
@@ -123,7 +123,7 @@ RECIPE_PANE_DATA = {
                 "original": ["2 tbsp", "soy sauce"]
             }
         ],
-        "directions": "In a small bowl, beat egg with water. Add oil to large skillet over medium low heat. Add egg and leave flat for 1 to 2 minutes. Remove from skillet and cut into shreds. Heat oil in same skillet; add onion and saute until soft. Then add rice, soy sauce, pepper and chicken. Stir fry together for about 5 minutes, then stir in egg. Serve hot."
+        "directions": "Add oil to large skillet over medium low heat. Add egg and leave flat for 1 to 2 minutes. Remove from skillet and cut into shreds. Heat oil in same skillet; add onion and saute until soft. Then add rice, soy sauce, pepper and cooked chicken. Stir fry together for about 5 minutes, then stir in egg. Serve hot."
     },
 
     "Easy Spring Rolls": {
@@ -155,8 +155,8 @@ RECIPE_PANE_DATA = {
                 "original": ["1/2 cup", "shredded carrots"]
             },
             {
-                "original": ["1 cup", "chicken, shredded"],
-                "substitute": ["1 package (10 1/2 ounce)", "firm tofu, drained and diced"],
+                "original": ["1 cup", "shredded chicken"],
+                "substitute": ["1 package (10 1/2 ounce)", "diced firm tofu"],
                 "where_to_buy": ["Shaw's", "http://www.shaws.com/stores/search-stores.html"],
                 "other_substitutions": [
                     ["1 tbsp", "nutritional yeast"]
@@ -177,6 +177,6 @@ RECIPE_PANE_DATA = {
                 "original": ["8 9-inch", "rice paper sheets"]
             }
         ],
-        "directions": "Make the sauce by stirring together soy sauce, vinegar, sesame oil and sesame seed in a small bowl and set aside. Make the filling by combining cabbage, carrots, chicken, and nuts. Dip the rice papers in a bowl of warm water and drain. Place between damp kitchen towels until ready to fill. Top with about 1/2 cup of the filling. Fold one edge over the filling, fold in sides, and roll up. Serve with the dipping sauce."
+        "directions": "Make the sauce by stirring together soy sauce, vinegar, sesame oil and sesame seed in a small bowl and set aside. Make the filling by combining cabbage, carrots, shredded chicken, and chopped peanuts. Dip the rice papers in a bowl of warm water and drain. Place between damp kitchen towels until ready to fill. Top with about 1/2 cup of the filling. Fold one edge over the filling, fold in sides, and roll up. Serve with the dipping sauce."
     }
 }
