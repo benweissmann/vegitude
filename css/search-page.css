@@ -10,18 +10,6 @@
     }
 
 /* Header */
-    #header {
-        border-bottom: 1px solid #ccc;
-
-    }
-
-    #header h1 {
-        font-size: 80px;
-        font-variant: small-caps;
-        font-family: 'lemon', cursive;
-        height: 100px;
-        line-height: 100px;
-    }
 
     h2 {
     	font-family: 'amaranth',cursive;

@@ -7,3 +7,25 @@ body {
     padding: 0 150px;
     box-shadow: 0px 0 20px 5px rgba(0, 0, 0, 0.3);
 }
+
+#header {
+    border-bottom: 1px solid #ccc;
+}
+
+#header img {
+    height: 100px;
+    float: left;
+    margin-top: -10px;
+}
+
+#header h1 {
+    font-size: 80px;
+    font-variant: small-caps;
+    font-family: 'Lemon', cursive;
+    height: 100px;
+    line-height: 100px;
+}
+
+h2, h3, h4 {
+    font-family: 'amaranth',cursive;
+}
