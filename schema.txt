@@ -1,0 +1,41 @@
+recipes:
+id: autoincrement
+name: string (255)
+time: string (255)
+servings: string (255)
+source_id: integer, fkey to sources
+url: string (255)
+
+
+ingredients:
+id: autoincrement
+name: string (255)
+
+
+inclusions:
+id: autoincrement
+recipe_id: integer, fkey to recipes
+ingredient_id: integer, fkey to ingredients
+
+
+sources:
+id: autoincrement
+name: string (255)
+url: string (255)
+
+
+restrictions:
+id: autoincrement
+name: string
+
+
+ingredients_restrictions:
+id: autoincrement
+ingredient_id: integer, fkey to ingredients
+restriction_id: integer, fkey to ingredients
+
+
+substitutions:
+id: autoincrement
+ingredient_1: integer, fkey to ingredients
+ingredient_2: integer, fkey to ingredients
