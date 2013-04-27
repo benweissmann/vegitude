@@ -1,10 +1,11 @@
 recipes:
 id: autoincrement
 name: string (255)
-time: string (255)
-servings: string (255)
+time: string (255), optional
+servings: string (255), optional
 source_id: integer, fkey to sources
 url: string (255)
+directions: text
 
 
 ingredients:
@@ -16,6 +17,7 @@ inclusions:
 id: autoincrement
 recipe_id: integer, fkey to recipes
 ingredient_id: integer, fkey to ingredients
+amount: string
 
 
 sources:
@@ -39,3 +41,10 @@ substitutions:
 id: autoincrement
 ingredient_1: integer, fkey to ingredients
 ingredient_2: integer, fkey to ingredients
+ratio: float (ingredient_1 / ingredient_2)
+
+
+search_texts:
+id: autoincrement
+recipe_id: integer
+text: text
