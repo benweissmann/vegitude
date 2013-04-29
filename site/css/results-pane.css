@@ -1,8 +1,16 @@
 /* Header */
     #header h4 {
         border-bottom: 1px solid #ccc;
-
     }
+
+    #header a {
+        color: black;
+    }
+
+    #header a:hover {
+        text-decoration: none;
+    }
+
 
 /* Results */
     .result {

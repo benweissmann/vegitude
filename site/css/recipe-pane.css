@@ -2,9 +2,26 @@
 @import url(http://fonts.googleapis.com/css?family=Amaranth);
 
 /* Make page full-height */
-    body, html, .container {
+    body, html, .container, #content {
         height: 100%;
+        overflow-y: hidden;
     }
+
+/* Loader */
+    #content, #no-results {
+        display: none;
+    }
+
+    #loader, #no-results {
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    #loader img {
+        padding-top: 100px;
+        -webkit-filter: blur(1px);
+    }
+
 
 
 /* Results pane */
@@ -41,8 +58,8 @@
             content: "Time: ";
         }
 
-        #recipe-difficulty::before {
-            content: "Difficulty: ";
+        #recipe-servings::before {
+            content: "Servings: ";
         }
 
     /* Ingredient toggle button */

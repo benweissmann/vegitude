@@ -15,7 +15,7 @@ Options +FollowSymLinks +ExecCGI
 #
 # Example:
 #   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-RewriteEngine On
+#RewriteEngine On
 
 # If your Rails application is accessed via an Alias directive,
 # then you MUST also set the RewriteBase in this htaccess file.
@@ -23,6 +23,9 @@ RewriteEngine On
 # Example:
 #   Alias /myrailsapp /path/to/myrailsapp/public
 #RewriteBase /myrailsapp
+
+RewriteEngine on
+
 
 RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
@@ -35,4 +38,4 @@ RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 # Example:
 #   ErrorDocument 500 /500.html
 
-RewriteBase /vegitude
+#RewriteBase /vegitude

@@ -1,9 +1,7 @@
 #!/usr/bin/ruby
-require File.join(File.dirname(__FILE__), 'app', 'vegitude')       
-require 'rack'
 
-## Added by scripts.mit.edu autoinstaller to reload when app code changes
-Thread.abort_on_exception = true
+require 'rubygems'
+require 'rack'
 
 fastcgi_log = File.open("fastcgi.log", "a")
 STDOUT.reopen fastcgi_log
@@ -21,26 +19,22 @@ module Rack
   end
 end
 
-class Rack::PathInfoRewriter
-  def initialize(app)
-    @app = app
-  end
+load 'app/vegitude.rb'
 
-  def call(env)
-    env["SCRIPT_NAME"] = ""
-    parts = env['REQUEST_URI'].split('?')
-    env['PATH_INFO'] = parts[0]
-    env['QUERY_STRING'] = parts[1].to_s
-    @app.call(env)
-  end
-end
+
+Thread.abort_on_exception = true
 
 
 t1 = Thread.new do
   begin
-    Rack::Handler::FastCGI.run Rack::PathInfoRewriter.new(Rack::URLMap.new("/vegitude" => Vegitude::Application))
+    builder = Rack::Builder.new do
+      map '/' do
+        run Vegitude.new
+      end
+    end
+
+    Rack::Handler::FastCGI.run(builder) 
   rescue => e
-    puts e
     raise e
   end
 end

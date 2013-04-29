@@ -104,9 +104,16 @@
     	display:block;
     }
 
-    #meal {
+    #query {
+        margin-left: 100px;
+        width: 600px;
+        height: 33px;
+        font-size: 33px;
         margin-top: 10px;
-        width: 400px;
+    }
+
+    #query::-webkit-input-placeholder {
+        padding-top: 9px;
     }
 
 

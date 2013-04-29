@@ -1,7 +1,6 @@
 $(function(){  
 
-    var customCounter = 0;
-
+    // dietary restriction toggle
     $('.drBtn button').click(function(){
         if($(this).attr('class')=="btn-success"){
             $(this).removeClass("btn-success").addClass("btn");
@@ -11,10 +10,11 @@ $(function(){
         }
     });
 
+
     function addCustomItem() {
         var input = $('#allergies').val();
 
-        $("<div><span>" + input + "</span><button class='btn btn-danger btn-mini'><i class='icon-minus icon-white'></i></button></div>")
+        $("<div><span class='custom-restriction'>" + input + "</span><button class='btn btn-danger btn-mini'><i class='icon-minus icon-white'></i></button></div>")
             .insertAfter("#add")
             .find("button").click(function(){
                 $(this).parent().remove();
@@ -24,6 +24,7 @@ $(function(){
         $("#allergies").focus();
     }
 
+    // click / enter handler for adding custom items
     $("#add").click(addCustomItem);
     $("#allergies").keypress(function(e){
         if (e.which == 13){
@@ -31,6 +32,7 @@ $(function(){
         }
     });
 
+    // show/hide custom container
     $("#custom").click(function() {
         if($("#customContainer").hasClass("shown")) {
             $("#customContainer").animate({'left': '630px'})
@@ -42,5 +44,30 @@ $(function(){
 
             $("#allergies").focus();
         }
+    });
+
+    
+    // submission
+    $("#search-form").submit(function(evt) {
+        evt.preventDefault();
+
+        custom = [];
+        $('.custom-restriction').each(function(idx, el) {
+            custom.push($(el).text());
+        })
+
+        // build params
+        var params = {
+            vegan: $('#vegan').hasClass("btn-success"),
+            vegetarian: $('#vegetarian').hasClass("btn-success"),
+            gf: $('#gluten-free').hasClass("btn-success"),
+            lf: $('#lactose-free').hasClass("btn-success"),
+            custom: custom,
+            query: $('#query').val()
+        }
+
+        window.location = "results.html?" + $.param(params);
+
+        return false;
     });
 });
