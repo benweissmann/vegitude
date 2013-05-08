@@ -1,4 +1,5 @@
 (function(exports) {
+    "use strict";
 
     // formats a (quantity, ingredient) tuple into a string
     function formatIngred(ingred) {
@@ -42,22 +43,22 @@
                 $("#recipe-name").text(recipe.name);
                 $("#recipe-source").text(recipe.source[0])
                                    .attr("href", recipe.source[1]);
-                $("#recipe-time").text(recipe.time);
-                $("#recipe-servings").text(recipe.servings);
 
-                $("#recipe-ingreds").empty();            
+                $("#recipe-ingreds").empty();
+                var hasSubstitutions = false;  
                 recipe.ingredients.forEach(function(ingredient) {
                     var listItem;
 
                     if(ingredient.substitute) {
+                        hasSubstitutions = true;
+
                         var listItem = $("<li />");
                         listItem.append('<span class="ingred-orig">' + formatIngred(ingredient.original));
                         listItem.append('<span class="ingred-sub">' + formatIngred(ingredient.substitute[0]));
 
                         var btn = $("<button class=\"btn btn-small\"><i class=\"icon-question-sign\"></i></button>")
 
-                        var content = "<b>substitution: </b>" + formatIngred(ingredient.substitute[0]) + "<br />" +
-                                      "<b>where to buy: </b>" + makeLink(ingredient.where_to_buy) + "<br />"
+                        var content = "<b>substitution: </b>" + formatIngred(ingredient.substitute[0]) + "<br />"
 
                         if(ingredient.substitute.length > 1) {
                             content += "<b>alternatives: </b>" + _.map(ingredient.substitute.slice(1), function(sub) {
@@ -87,6 +88,15 @@
 
                     $("#recipe-ingreds").append(listItem);
                 });
+
+                console.log(hasSubstitutions);
+
+                if(hasSubstitutions) {
+                    $("#recipe-ingred-toggle").show();
+                }
+                else {
+                    $("#recipe-ingred-toggle").hide();
+                }
                 
                 $("#recipe-directions-orig").html(htmlize(recipe.directions));
                 $("#recipe-directions-sub").html(htmlize(subDirections(recipe.directions, recipe.ingredients)));   

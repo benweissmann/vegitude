@@ -22,16 +22,16 @@ class Ingredient < ActiveRecord::Base
   has_many :substitutions_2, :class_name => "Substitution", :foreign_key => "ingredient_2"
 
   def substitutions
-    Ingredient.select('ingredients.*, COALESCE(sub1.ratio, 1/sub2.ratio) AS ratio').
+    Ingredient.select('ingredients.*, COALESCE(sub1.ratio, 1/sub2.ratio) AS ratio, COALESCE(sub1.quality, sub2.quality) AS quality').
                joins('LEFT OUTER JOIN substitutions sub1 ON ingredients.id=sub1.ingredient_1').
                joins('LEFT OUTER JOIN substitutions sub2 ON ingredients.id=sub2.ingredient_2').
-               where(['sub1.ingredient_2=? OR sub2.ingredient_1=?', self.id, self.id])
+               where(['(sub1.ingredient_2=? AND sub1.quality > 0.5) OR (sub2.ingredient_1=? AND sub2.quality > 0.5)', self.id, self.id]).
+               group('name').
+               order('quality DESC')
   end
 end
 
 class Substitution < ActiveRecord::Base
-  belongs_to :ingredient_1, :class_name => "Ingredient", :foreign_key => "ingredient_1"
-  belongs_to :ingredient_2, :class_name => "Ingredient", :foreign_key => "ingredient_2"
 end
 
 class Restriction < ActiveRecord::Base

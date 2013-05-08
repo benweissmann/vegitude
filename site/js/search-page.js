@@ -1,30 +1,30 @@
 $(function(){  
 
     // dietary restriction toggle
-    $('.drBtn button').click(function(){
-        if($(this).attr('class')=="btn-success"){
-            $(this).removeClass("btn-success").addClass("btn");
-        }
-        else{
-            $(this).removeClass("btn").addClass("btn-success");
-        }
+    $('.drBtn button:not(#custom)').click(function(){
+        $(this).toggleClass("btn-success");
     });
 
 
-    function addCustomItem() {
-        var input = $('#allergies').val();
+    // click / enter handler for adding custom items
+    function addCustomItem(input) {
+        if(typeof input != "string") {
+            var input = $('#allergies').val();
+        }
 
-        $("<div><span class='custom-restriction'>" + input + "</span><button class='btn btn-danger btn-mini'><i class='icon-minus icon-white'></i></button></div>")
-            .insertAfter("#add")
-            .find("button").click(function(){
-                $(this).parent().remove();
-            });
+        if(input.trim().length > 0) {
+            $("<div><span class='custom-restriction'>" + input + "</span><button class='btn btn-danger btn-mini'><i class='icon-minus icon-white'></i></button></div>")
+                .insertAfter("#add")
+                .find("button").click(function(){
+                    $(this).parent().remove();
+                });
+        }
 
         $('#allergies').val("");
         $("#allergies").focus();
     }
 
-    // click / enter handler for adding custom items
+    
     $("#add").click(addCustomItem);
     $("#allergies").keypress(function(e){
         if (e.which == 13){
@@ -32,8 +32,24 @@ $(function(){
         }
     });
 
+    // handlers for updating whether custom is selected
+    function updateCustomHighlight() {
+        if(($('#allergies').val().trim().length > 0) ||
+           ($('.custom-restriction').length > 0)) {
+
+            $("#custom").addClass("btn-success");
+        }
+        else {
+            $("#custom").removeClass("btn-success");
+        }
+    }
+
+    $("#allergies").keyup(updateCustomHighlight);
+    $("#customContainer").click("button", updateCustomHighlight);
+
+
     // show/hide custom container
-    $("#custom").click(function() {
+    function toggleCustomContainer() {
         if($("#customContainer").hasClass("shown")) {
             $("#customContainer").animate({'left': '630px'})
                                  .removeClass("shown");
@@ -44,7 +60,10 @@ $(function(){
 
             $("#allergies").focus();
         }
-    });
+    }
+
+    
+    $("#custom").click(toggleCustomContainer);
 
     
     // submission
@@ -53,8 +72,11 @@ $(function(){
 
         custom = [];
         $('.custom-restriction').each(function(idx, el) {
-            custom.push($(el).text());
+            custom.push($(el).text().trim());
         })
+        if($('#allergies').val().trim().length > 0) {
+            custom.push($('#allergies').val().trim());
+        }
 
         // build params
         var params = {
@@ -66,8 +88,49 @@ $(function(){
             query: $('#query').val()
         }
 
+        $.cookie("vegitude-saved", JSON.stringify(params));
+
         window.location = "results.html?" + $.param(params);
 
         return false;
+    });
+
+    // restore saved restrictions
+    var savedRestrictions = $.cookie("vegitude-saved");
+    if(savedRestrictions) {
+        savedRestrictions = JSON.parse(savedRestrictions);
+        if(savedRestrictions.vegan) {
+            $('#vegan').addClass("btn-success");
+        }
+        if(savedRestrictions.vegetarian) {
+            $('#vegetarian').addClass("btn-success");
+        }
+        if(savedRestrictions.gf) {
+            $('#gluten-free').addClass("btn-success");
+        }
+        if(savedRestrictions.lf) {
+            $('#lactose-free').addClass("btn-success");
+        }
+        if(savedRestrictions.custom.length > 0) {
+            $("#custom").addClass("btn-success");
+            toggleCustomContainer();
+            savedRestrictions.custom.reverse().forEach(function(item) {
+                addCustomItem(item);
+            });
+        }
+    }
+
+    // apply query from url
+    var urlQuery = $.url().param("query");
+    if(urlQuery) {
+        $("#query").val(urlQuery).select();
+    }
+
+    // add autocomplete
+
+    $.get('data/autocomplete.json', function(json) {
+        $('#allergies').typeahead({
+            source: json
+        });
     });
 });
