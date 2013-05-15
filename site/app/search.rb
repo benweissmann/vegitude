@@ -67,11 +67,18 @@ class Search
 
       unless result.nil?
         results.push result
-        return results if results.length >= desired_results
+        break if results.length >= desired_results
       end
     end
 
-    return results
+    return results.each_with_index.sort_by do |(result, score), idx| 
+      # add the index to the score to ensure a stable sort --
+      # if the scores are tied, keep the relevancy ordering
+      [score, idx]
+    end.map do |(result, score), idx|
+      # map it to just the result
+      result
+    end
   end
 
   def forbidden? ingredient
@@ -110,6 +117,9 @@ class Search
   def assemble_recipe_data recipe
     ingredients = []
 
+    # sum of (1-quality) for each substitution
+    score = 0
+
     recipe.inclusions.each do |inclusion|
       ingredient = inclusion.ingredient
       ingredient_data = {}
@@ -125,6 +135,7 @@ class Search
           ingredient_data["substitute"] = subs.map do |sub|
             [apply_ratio(inclusion.amount, sub.ratio), sub.name]
           end
+          score += (1 - subs.first.quality)
         end
       end
 
@@ -137,13 +148,11 @@ class Search
       ingredients.push ingredient_data
     end
 
-    {
+    [{
       "name"        => recipe.name,
       "source"      => [recipe.source.name, recipe.url],
-      "time"        => recipe.time,
-      "servings"    => recipe.servings,
       "directions"  => recipe.directions,
       "ingredients" => ingredients
-    }
+    }, score]
   end
 end

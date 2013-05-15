@@ -1884,11 +1884,13 @@
         height: this.$element[0].offsetHeight
       })
 
+      var newPos = this.$element.offset();
+
       this.$menu
         .insertAfter(this.$element)
         .css({
-          top: pos.top + pos.height
-        , left: pos.left
+          top: newPos.top + pos.height
+        , left: newPos.left
         })
         .show()
 

@@ -17,11 +17,38 @@ ActiveRecord::Base.establish_connection(
 )
 
 require 'models'
-require 'search'
 require 'db_utils'
+
+def tagger
+  @items = Ingredient.where(:reviewed_by => nil).order("RAND()").limit(50)
+
+  @fuzzy = Ingredient.where(:reviewed_by => 'fuzzy').count
+  @miren = Ingredient.where(:reviewed_by => 'miren').count
+  @trevor = Ingredient.where(:reviewed_by => 'trevor').count
+  @total = Ingredient.count
+
+  @restrictions = Restriction.all
+  erb :tagger
+end
 
 class Vegitude < Sinatra::Application
   get '/recipes' do
+    require 'search'
     Search.new(params).query(params["query"]).to_json
+  end
+
+  get '/tagger' do
+    tagger
+  end
+
+  post '/tagger' do
+    require 'tagger'
+    result = Tagger.submit(params)
+
+    if result == true
+      tagger
+    else
+      result
+    end
   end
 end

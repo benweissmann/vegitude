@@ -24,19 +24,40 @@
         </div>
         <div id="no-results">
             <h2>No results found.</h2>
-            <a href="index.html">&laquo; Try Again?</a>
+            <form class="mini-search form-search">
+                <div class="input-append">
+                    <input type="search" class="search-query"/>
+                    <input type="submit" class="btn" value="search" />
+                </div>
+            </form>
+        </div>
+        <div id="load-error">
+            <h2>Oops! An error occured, and we couldn't complete your search.</h2>
+            <form class="mini-search form-search">
+                <div class="input-append">
+                    <input type="search" class="search-query"/>
+                    <input type="submit" class="btn" value="search" />
+                </div>
+            </form>
         </div>
         <div id="content">
             <div id="recipe-results">
                 <h2>Results</h2>
-                <a href="index.html">&laquo; Back to search</a>
+                <form class="mini-search form-search">
+                    <div class="input-append">
+                        <input type="text" class="search-query"/>
+                        <input type="submit" class="btn" value="search" />
+                    </div>
+                </form>
+                <div id="restrictions-display">
+                    <span id="restrictions-list"></span>
+                    <a href="index.html" class="link-back">(change)</a>
+                </div>
                 <div id="results"></div>
             </div>
             <div id="recipe-pane" class="substituted">
                 <h2 id="recipe-name"></h2>
                 <a id="recipe-source" target="_blank"></a>
-                <div id="recipe-time"></div>
-                <div id="recipe-servings"></div>
 
                 <div id="recipe-ingred-toggle" class="btn-group" data-toggle="buttons-radio">
                     <button id="recipe-show-orig" class="btn">Original</button>
@@ -58,6 +79,7 @@
 
     <script src="lib/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="lib/underscore-min.js" type="text/javascript"></script>
+    <script src="lib/purl.js" type="text/javascript"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="data/recipe-pane.js" type="text/javascript"></script>
     <script src="js/recipe-pane.js" type="text/javascript"></script>

@@ -21,7 +21,7 @@
         border-bottom-right-radius: 1em;
         border-top-left-radius: 1em;
         border-top-right-radius: 1em;
-        margin: 10px;
+        margin: 10px 10px 10px 0;
         padding-left: 18px;
         transition: background-color 0.25s;
         cursor: pointer;
@@ -32,7 +32,8 @@
     }
 
     .result.active {
-        background-color: #00aaee;
+        background-color: #5bb75b;
+        color: white;
         position: relative;
         cursor: default;
     }
@@ -49,7 +50,7 @@
 
     .result.active:after {
         border-color: rgba(136, 183, 213, 0);
-        border-left-color: #00aaee;
+        border-left-color: #5bb75b;
         border-width: 10px;
         top: 50%;
         margin-top: -10px;
@@ -63,6 +64,10 @@
 
     #recipe-results {
         border-right: 1px solid #ccc;
+        padding-left: 5px;
     }
 
+    #recipe-results .mini-search input[type=text] {
+        width: 150px;
+    }
 
